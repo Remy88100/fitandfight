@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ activite.title }} {% endblock %}
+
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <div class= "container">
+
+    <div class = "row">
+    <div class = "col-md-6">
+     {% if activite.filename %}
+    <img src=" {{('/images/activites/planningbis.jpg') }}" style="width: 100%; height: 80%">
+        {% endif %}
+        
+     
+  
+
+    </div>
+
+    <div class= "col-md-4">
+ <h1>{{ activite.title }} </h1>
+
+
+
+        
+
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+<div class="container mt-4">
+
+    <p>
+        {{ activite.Description | nl2br }}
+    </p> 
+
+    
+    </div>
+    
+
+{% endblock %}

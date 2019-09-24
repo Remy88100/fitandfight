@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Création Evénement {% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ path ('Admin.property.index') }}">Evénements</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item {% if current_menu is defined and current_menu == 'admin.activite'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('Admin.activite.indexe') }}">Activités</a>
+       </li>
+       <li class="nav-item {% if current_menu is defined and current_menu == 'admin.membre'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('Admin.membre.index') }}">Membres</a>
+       </li>
+    </ul>
+  
+  </div>
+</nav>
+<div class="container">
+ <h1>Créer un événement</h1>
+
+ {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-md-4"> {{ form_row(form.title) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> {{ form_row(form.description) }}</div>
+        </div>
+        <div class="row">
+        {{ form_rest(form) }}
+        </div>
+        <button class="btn btn-primary">Sauvegarder</button>
+
+        {{ form_end(form)}}
+    
+
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos événements!{% endblock %}
+
+{% block body %}
+
+<div class="text-center">
+    <h1>Evénements du club</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+    {% for event in events %}
+ <div class="col-md-4">
+    <div class="card mb-4">
+    
+    <div class=" card-body">
+       <div class="card-header">
+     <h4 class="card-title">
+            {{ event.title}}
+            </h4>
+           </div>
+        
+           
+            <p class="card-text">{{event.description}}</p>
+            
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+    
+
+
+{% endblock %}

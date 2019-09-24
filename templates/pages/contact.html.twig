@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Contactez nous {% endblock %}
+
+{% block body %}
+
+<h1 class="text-center">Contact</h1>
+<div class="container-fluid">
+    
+    <div class="row">
+            
+        <div class="col-sm-4">
+            <h3>Notre Localisation</h3>
+            <div class="card">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d663.7013377266148!2d6.952371629256929!3d48.28736049870221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4793eea22234c567%3A0x5d3dde8a06b0d6f2!2s8%20Rue%20des%20Fr%C3%A8res%20Simon%2C%2088100%20Saint-Di%C3%A9-des-Vosges!5e0!3m2!1sfr!2sfr!4v1568123109011!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <h3>Nos coordonnées</h3>
+            <p>Fit and Fight <br>
+                6/8 rue des frères simon <br>
+                88100 Saint Dié des vosges
+            </p>
+            <p>TEL: 07.88.51.71.30</p>
+            <p>Email: contact@fitandfight.fr</p>
+        </div>
+
+        <div class="col-sm-4">
+                {% for message in app.flashes('success') %} 
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            <h3>Formulaire de contact</h3>
+
+            {{ form_start(form) }}
+           
+            {{ form_rest(form) }}
+            
+
+
+        <button class="btn btn-primary" type="submit">Envoyer</button>
+
+        {{ form_end(form)}}
+        
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

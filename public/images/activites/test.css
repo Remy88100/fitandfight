@@ -1,0 +1,17 @@
+@font-face {
+  src: url("/FitandFight/public/images/activites/Airstream.ttf") format("ttf");
+    font-family:'test';
+    font-style: normal;
+  }
+
+
+
+h1 
+    {
+        font:'test';
+      
+      }
+
+footer {
+    background-color: lightgrey;
+}

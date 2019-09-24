@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Editer un membre' %}
+
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ path ('Admin.property.index') }}">Evénements</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item {% if current_menu is defined and current_menu == 'admin.activite'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('Admin.activite.indexe') }}">Activités</a>
+       </li>
+       <li class="nav-item {% if current_menu is defined and current_menu == 'admin.membre'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('Admin.membre.index') }}">Membres</a>
+       </li>
+    </ul>
+  
+  </div>
+</nav>
+    <div class="container">
+    <h1>Editer un membre</h1>
+
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-md-3"> {{ form_row(form.name) }}</div>
+            <div class="col-md-3"> {{ form_row(form.username) }}</div>
+            <div class="col-md-3"> {{ form_row(form.birthday) }}</div>
+            <div class="col-md-3"> {{ form_row(form.email) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"> {{ form_row(form.adress) }}</div>
+            <div class="col-md-3"> {{ form_row(form.postalcode) }}</div>
+            <div class="col-md-3"> {{ form_row(form.ville) }}</div>
+            <div class="col-md-3"> {{ form_row(form.phone) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"> {{ form_row(form.pack_choice) }}</div>    
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"> {{ form_row(form.doctor_name) }}</div>
+            <div class="col-md-3"> {{ form_row(form.doctor_adress) }}</div>
+            <div class="col-md-3"> {{ form_row(form.doctor_phone) }}</div>
+        </div>
+
+                <div class="row">
+            <div class="col-md-3"> {{ form_row(form.emergency_people) }}</div>
+            <div class="col-md-3"> {{ form_row(form.emergency_phone) }}</div>
+            <div class="col-md-3"> {{ form_row(form.blood_group) }}</div>
+            <div class="col-md-3"> {{ form_row(form.allergy) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"> {{ form_row(form.medical_agreement) }}</div>    
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2"> {{ form_row(form.pictures_agreement) }}</div>    
+        </div>
+    
+        {{ form_rest(form) }}
+        <button class="btn btn-primary">Sauvegarder</button>
+
+        {{ form_end(form)}}
+    </div>
+{% endblock %}

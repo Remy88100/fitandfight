@@ -1,0 +1,27 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %} Documents {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Documents d'inscription</h1>
+    <p>Retrouvez sur cette page les feuilles d'incription (majeur/mineur) ainsi que la liste des documents nécessaires.</p>
+
+
+<div class="row">
+<p> Bulletin d'inscription des adultes 
+    <a class="btn btn-primary" href="{{ path ('document.download1') }}" role="button">Inscption_adulte</a></p>
+    </div>
+    <div class="row">
+<p> Bulletin d'inscription des mineurs 
+     <a class="btn btn-primary" href="{{ path ('document.download2') }}">Inscription_mineur</a> </p>
+     </div>
+     <div class="row">
+<p> Règlement du club 
+<a class="btn btn-primary" href="{{ path ('document.download3') }}">Règlement</a></p>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<h1>Merci de nous avoir contacté</h1>
+
+<p>Bonjour Mr ou Mme {{ contact.name }} nous a contacté via le formulaire</p>
+
+
+
+<p>Quelques informations:</p>
+<p>Nom: {{contact.name}} </p>
+<p>Prenom: {{contact.prenom}} </p>
+<p>Adresse: {{contact.adresse}} {{contact.postalcode}} {{contact.ville}}  </p>
+<p>Date de Naissance:  {{ contact.birthday|date("d/m/Y") }} </p>
+
+<p>Votre message:</p>
+
+<p> {{ contact.message }} </p>
+
+<p>Nous pouvons les contacter ici:</p>
+
+    tel: {{ contact.phone }}
+    email: <a href="mailto: {{ contact.email }}">{{ contact.email }}</a>
+
+    <p>A bientôt</p>

@@ -1,12 +1,224 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+
+    <title>{% block title %} Fit and Fight{% endblock %} </title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/images/activites/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/images/activites/test.css"> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ {% block stylesheet %}  {% endblock %}
+  </head>
+  <body>
+   <div class="jumbotron text-center">
+        
+     <img src=" {{('/images/activites/logo.jpeg') }}" style="width: 30%">    
+     </div>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ path ('index') }}">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if current_menu is defined and current_menu == 'event'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('event.index') }}">Evénements</a>
+      </li>
+       <li class="nav-item {% if current_menu is defined and current_menu == 'activites'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('pages.activites') }}">Activités</a>
+       </li>
+       <li class="nav-item {% if current_menu is defined and current_menu == 'photos'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('photos.photo') }}">Photos</a>
+       </li>
+       <li class="nav-item {% if current_menu is defined and current_menu == 'contact'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('pages.contact') }}">Contact</a>
+      </li>
+      <li class="nav-item {% if current_menu is defined and current_menu == 'document'  %} active {% endif %}">
+        <a class="nav-link" href="{{ path ('document.index') }}">Documents</a>
+      </li>
+
+
+        {%  if is_granted("ROLE_ADMIN",app.user) %}
+        <li class="nav-item {% if current_menu is defined and current_menu == 'admin'  %} active {% endif %}">
+          <a class="nav-link" href="{{ path ('Admin.property.index') }}">Administration</a>
+        </li>
+      {% endif %}
+       
+         
+      </ul> 
+    
+      
+      <ul class="navbar-nav mr-5">
+            <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Compte
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    
+    
+    
+    {% if app.user  %}
+    <a class="dropdown-item" href="{{ path('app_logout')}}">Se déconnecter</a>
+    {% else %}
+<a class="dropdown-item" href="{{ path ('app_login') }}">Connexion</a>
+<a class="dropdown-item" href="{{ path ('app_register') }}">Créer un compte</a>
+  </div>
+</div>
+      </ul> 
+       {% endif %}   
+  </div>
+</nav>
+
+<main role="main">
+
+  
+
+{% block body %} {% endblock %}
+
+</main>
+
+</body>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-3">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Informations</h5>
+        <p>Retrouvez nos coordonnées ici</p>
+        <p>N'hésitez pas à prendre contact avec nous pour de plus amples informations.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mb-4">A propos</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a href="{{path ('index')}}" style="color:grey;">Accueil</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="{{path ('event.index')}}" style="color:grey;">Evénements</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="{{path ('pages.activites')}}" style="color:grey;">Activités</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="{{path ('pages.contact')}}" style="color:grey;">Contact</a>
+            </p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Contact details -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Adresse</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <i class="fas fa-home mr-3"></i> 6/8 rue des freres simon <br>
+               88100 saint dié des vosges</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-envelope mr-3"></i> contact@fitandfight.fr</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-phone mr-3"></i> 07 88 51 71 30</p>
+          </li>
+       
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+        <!-- Social buttons -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Suivez nous</h5>
+
+        <!-- Facebook -->
+        <a  href="https://fr-fr.facebook.com/pg/Fit-and-Fight-%C3%A0-chacun-son-combat-2511852975497562/posts/" class="btn-floating btn-fb" role="button" style="color:grey;">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <!-- Insta -->
+        <a href="http://picdeer.org/fitandfight88" type="button" class="btn-floating btn-tw" style="color:grey;">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <!-- Google +-->
+        <a href="https://goo.gl/maps/Wux84Q6ErVGBj7Ay8" type="button" class="btn-floating btn-gplus" style="color:grey;">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+       
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Info site:
+    <a href="{{ path ('pages.mentionslegales')}}"> Mentions légales</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<scipt src="/images/activites/fontawesome/js/all.js"></script>
+<script src="node_modules/jquery/jquery.min.js"></script>
+<script src="node_modules/jquery-captcha/dist/jquery-captcha.min.js"></script>
+
+{% block javascript %} {% endblock %}
+
 </html>
