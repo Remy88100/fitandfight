@@ -1,8 +1,0 @@
-swiftmailer:
-    transport: smtp
-    auth_mode: login
-    port: 587
-    host: mail42.lwspanel.com
-    username: contact@fitandfight.fr
-    password: F1t@ndF1ght
-    spool: { type: 'memory' }
